@@ -1,0 +1,57 @@
+{
+  "name": "airport-delays-faa-status-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for airport delays today from the FAA: ground stops, ground delay programs with average and maximum delay, arrival and departure delays, airport closures and deicing at US airports, the status of one airport, and a trip check for origin, connection and destination. Read live from the FAA National Airspace System status. No API key.",
+  "type": "module",
+  "license": "MIT",
+  "author": "theluckystrike",
+  "mcpName": "io.github.theluckystrike/airport-delays-faa-status-mcp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theluckystrike/airport-delays-faa-status-mcp"
+  },
+  "homepage": "https://www.mcpstamp.com/servers/",
+  "bin": {
+    "airport-delays-faa-status-mcp": "dist/stdio.js"
+  },
+  "main": "dist/stdio.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test",
+    "start": "node dist/stdio.js",
+    "deploy": "npx wrangler@4 deploy",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "airport-delays",
+    "faa",
+    "airport-status",
+    "ground-stop",
+    "ground-delay-program",
+    "flight-delays",
+    "air-traffic",
+    "nas-status",
+    "travel",
+    "aviation",
+    "cloudflare-workers"
+  ]
+}

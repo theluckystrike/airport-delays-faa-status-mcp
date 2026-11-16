@@ -1,0 +1,5 @@
+[
+  ["airport_delays_now", {}],
+  ["airport_status", {"airport": "SFO"}],
+  ["airport_delays_check_trip", {"airports": ["BOS", "ORD", "SFO"]}]
+]
