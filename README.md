@@ -1,5 +1,49 @@
 # airport-delays-faa-status-mcp
 
+**Live FAA airport delays, ground stops and ground delay programs for every US airport, as an MCP server.** Free and hosted: no API key, no sign-up.
+
+Hosted MCP URL (Streamable HTTP):
+
+```
+https://airport-delays-faa-status-mcp.lipmichal.workers.dev/mcp
+```
+
+## Quick start
+
+### Claude
+
+Claude Desktop or claude.ai: Settings > Connectors > Add custom connector, then paste the URL above.
+
+Claude Code:
+
+```
+claude mcp add --transport http airport-delays https://airport-delays-faa-status-mcp.lipmichal.workers.dev/mcp
+```
+
+Claude Desktop config file (`claude_desktop_config.json`), through the `mcp-remote` bridge:
+
+```json
+{
+  "mcpServers": {
+    "airport-delays": { "command": "npx", "args": ["-y", "mcp-remote", "https://airport-delays-faa-status-mcp.lipmichal.workers.dev/mcp"] }
+  }
+}
+```
+
+### Cursor
+
+Add to `~/.cursor/mcp.json`.
+
+```json
+{
+  "mcpServers": {
+    "airport-delays": { "url": "https://airport-delays-faa-status-mcp.lipmichal.workers.dev/mcp" }
+  }
+}
+```
+
+## About
+
 Airport delays today for AI assistants. Ask whether there is a ground stop at Newark, how long the ground delay program at San Francisco is running, which US airports have delays right now, or whether anything on your Boston to Chicago to San Francisco trip is held.
 
 This is a Model Context Protocol (MCP) server. It reads the FAA National Airspace System status (the Air Traffic Control System Command Center feed behind nasstatus.faa.gov) at call time. It needs no API key.
@@ -20,7 +64,7 @@ Every result has structured JSON, a plain-text summary, `as_of`, `source` and `m
 - Average and maximum delay of a ground delay program, and the minimum to maximum range and trend of general arrival and departure delays.
 - Which closures matter: night curfews and full closures are reported, while NOTAMs that only close an airport to private transient aircraft are kept as notices.
 
-## Install
+## Other clients and local install
 
 ### Hosted (custom connector, ChatGPT developer mode, any remote MCP client)
 
@@ -28,18 +72,6 @@ Paste this URL. No token, no sign-up.
 
 ```
 https://airport-delays-faa-status-mcp.lipmichal.workers.dev/mcp
-```
-
-### Cursor
-
-Add to `~/.cursor/mcp.json`.
-
-```json
-{
-  "mcpServers": {
-    "airport-delays": { "url": "https://airport-delays-faa-status-mcp.lipmichal.workers.dev/mcp" }
-  }
-}
 ```
 
 ### VS Code
